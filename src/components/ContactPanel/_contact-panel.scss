@@ -1,0 +1,218 @@
+@import 'vars';
+
+.contact-panel {
+  width: 100%;
+  max-width: 400px;
+  transition: width 0.5s ease-in-out;
+  border-left: 1px solid #e4edef;
+  display: flex;
+  flex-direction: column;
+  background: white;
+
+  &__body {
+    padding: 50px;
+    background-color: #23272a;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    transition: opacity 0.5s ease-in-out;
+    overflow-y: auto;
+
+    &__edit-btn {
+      margin-top: auto;
+      border: 0;
+      border-radius: 7px;
+      font-size: 20px;
+      background: #7289da;
+      color: white;
+      height: 50px;
+      min-height: 50px;
+      font-weight: 500;
+      display: inline-block;
+      width: 225px;
+      margin-left: auto;
+      margin-right: auto;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        color: #7289da;
+        background-color: white;
+      }
+    }
+
+    &__link {
+      color: #99aab5;
+      font-size: 18px;
+      cursor: pointer;
+      display: inline-flex;
+
+      &:hover {
+        color: #7289da;
+      }
+    }
+
+    &__labels {
+      white-space: nowrap;
+
+      > * {
+        background: #7289da;
+        height: 35px;
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-weight: 500;
+        color: white;
+        font-size: 16px;
+        margin-right: 10px;
+        cursor: pointer;
+
+        &:hover {
+          background: #687dc9;
+        }
+
+        > i {
+          margin-left: 10px;
+          color: #53639b;
+        }
+      }
+    }
+
+    &__attachments {
+      color: #5e7182;
+      font-size: 18px;
+      white-space: nowrap;
+
+      > p > i {
+        margin-right: 15px;
+      }
+    }
+
+    &__block {
+      margin-bottom: 60px;
+    }
+
+    &__value {
+      font-size: 18px;
+      margin: 0;
+      margin-top: 10px;
+      color: #99aab5;
+    }
+
+    &__label {
+      letter-spacing: 1.5px;
+      font-weight: 500;
+      color: #99aab5;
+      font-size: 18px;
+      margin: 0;
+
+      &:not(:first-of-type) {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &__header {
+    background: #2c2f33;
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+    padding-top: 10px;
+    transition: padding 0.5s ease-in-out;
+    height: 260px;
+
+    &__profile {
+      color: white;
+      margin-top: 20px;
+      transition: opacity 0.5s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &__picture {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #4eb9ef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+      }
+
+      > h1 {
+        font-weight: 400;
+        margin-left: 10px;
+      }
+
+      i {
+        font-weight: 500;
+      }
+    }
+  }
+
+  &__toggle {
+    font-size: 30px;
+    margin-left: auto;
+    color: #7289da;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+    @media only screen and (min-width: 1500px) {
+      display: none;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &::before {
+      transform: none;
+    }
+  }
+
+  @media only screen and (max-width: 1500px) {
+    &--minimised {
+      width: $contact-panel-min-width !important;
+
+      > .contact-panel {
+        &__body {
+          opacity: 100;
+        }
+
+        &__header {
+          padding-left: 0;
+
+          .contact-panel {
+            &__header {
+              &__profile {
+                opacity: 0;
+              }
+            }
+
+            &__toggle {
+              &::before {
+                transform: scale(-1, 1);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: $mid-breakpoint) {
+    position: fixed;
+    right: 0;
+    width: 100%;
+  }
+}
